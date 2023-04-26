@@ -1,6 +1,8 @@
 import os
 from copy import copy
 
+print("This is the test if git new clone is working or not. Also, git code space commt")
+
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
