@@ -1,7 +1,8 @@
+print("This is the test if git new clone is working or not. Also, git code space commt")
+
+print("#################-----------------Importing libraries----------------########")
 import os
 from copy import copy
-
-print("This is the test if git new clone is working or not. Also, git code space commt")
 
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
@@ -73,6 +74,7 @@ def run_eval(
     val_df: pd.DataFrame,
     mode: str = "validation",
 ) -> Tuple:
+    print("#################-----------------running the run eval funations ----------------########")
     """Runs the evaluation loop.
 
     Args:
@@ -155,6 +157,7 @@ def run_train(
     val_dataloader: torch.utils.data.DataLoader,
     val_df: pd.DataFrame,
 ):
+    print("#########---------------Running the train function-----------------########")
     """Runs the training loop.
 
     Args:
@@ -422,6 +425,7 @@ def run_train(
 
 
 def run(cfg: Any) -> None:
+    print("##########---------------runinng the run function---------------########")
     """Runs the routine.
 
     Args:
@@ -635,6 +639,7 @@ def run(cfg: Any) -> None:
 
 
 if __name__ == "__main__":
+    print("######-----------Running the main function-------------##########")
     parser = argparse.ArgumentParser(description="")
     parser.add_argument(
         "-C", "--config", help="config filename", default=argparse.SUPPRESS
