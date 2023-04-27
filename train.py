@@ -1,6 +1,3 @@
-print("This is the test if git new clone is working or not. Also, git code space commt")
-
-print("#################-----------------Importing libraries----------------########")
 import os
 from copy import copy
 
@@ -74,7 +71,7 @@ def run_eval(
     val_df: pd.DataFrame,
     mode: str = "validation",
 ) -> Tuple:
-    print("#################-----------------running the run eval funations ----------------########")
+    logger.info(f"#################-----------------running the run eval funations ----------------########")
     """Runs the evaluation loop.
 
     Args:
@@ -157,7 +154,7 @@ def run_train(
     val_dataloader: torch.utils.data.DataLoader,
     val_df: pd.DataFrame,
 ):
-    print("#########---------------Running the train function-----------------########")
+    logger.info(f"#########---------------Running the train function-----------------########")
     """Runs the training loop.
 
     Args:
@@ -210,6 +207,7 @@ def run_train(
 
     batch = None
     if cfg.training.evaluate_before_training:
+        logger.info(f"##########---------------calling run_eval function--------------########")
         val_data, val_loss, val_metric = run_eval(
             cfg=cfg, model=model, val_dataloader=val_dataloader, val_df=val_df
         )
@@ -380,7 +378,7 @@ def run_train(
             if (itr + 1) % evaluation_step == 0:
                 if cfg.training.evaluation_epochs == 1:
                     progress_bar.close()
-
+                logger.info(f"##########---------------calling run_eval function--------------########")
                 val_data, val_loss, val_metric = run_eval(
                     cfg=cfg, model=model, val_dataloader=val_dataloader, val_df=val_df
                 )
@@ -425,7 +423,8 @@ def run_train(
 
 
 def run(cfg: Any) -> None:
-    print("##########---------------runinng the run function---------------########")
+    
+    logger.info(f"##########---------------runinng the run function---------------########")
     """Runs the routine.
 
     Args:
@@ -639,7 +638,8 @@ def run(cfg: Any) -> None:
 
 
 if __name__ == "__main__":
-    print("######-----------Running the main function-------------##########")
+    logger.info(f"######-----------Running the main function-------------##########")
+    
     parser = argparse.ArgumentParser(description="")
     parser.add_argument(
         "-C", "--config", help="config filename", default=argparse.SUPPRESS
@@ -683,6 +683,7 @@ if __name__ == "__main__":
     initialize_logging(cfg)
 
     try:
+        logger.info(f"######-----------Calling the run function------------##########")
         run(cfg=cfg)
     except Exception:
         logging.error("Exception occurred during the run:", exc_info=True)
