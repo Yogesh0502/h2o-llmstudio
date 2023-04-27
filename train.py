@@ -390,7 +390,9 @@ def run_train(
 
                         if cfg.environment._local_rank == 0:
                             checkpoint_path = cfg.output_directory
+                            logger.info(f"##########---------------Yogesh Test 2 Logging-------------########")
                             logger.info(
+                                f"Checking Yogesh Test1: "
                                 f"Saving best model checkpoint: "
                                 f"val_{cfg.prediction.metric} {best_val_metric:.5} -> "
                                 f"{val_metric:.5} to {checkpoint_path}"
