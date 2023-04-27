@@ -611,6 +611,7 @@ def run(cfg: Any) -> None:
             checkpoint_path = cfg.output_directory
 
             logger.info(
+                f"Yogesh Test 1:"
                 f"Saving last model checkpoint: "
                 f"val_loss {val_loss:.5}, val_{cfg.prediction.metric} "
                 f"{val_metric:.5} to {checkpoint_path}"
